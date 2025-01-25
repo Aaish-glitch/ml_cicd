@@ -1,4 +1,5 @@
 import pytest
+import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
@@ -8,7 +9,7 @@ from sklearn.metrics import mean_absolute_error
 # Assuming the dataset is in CSV format, you can adjust the file path.
 def load_data():
     # Load the wine dataset (this can be adjusted based on your data source)
-    df = pd.read_csv('..\data\wine_quality.csv')
+    df = pd.read_csv('../data/wine_quality.csv')
     return df
 
 def test_data_loading():
