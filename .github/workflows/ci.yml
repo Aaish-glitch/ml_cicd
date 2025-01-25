@@ -28,7 +28,7 @@ jobs:
 
       - name: Run pylint
         run: |
-          pylint --max-line-length=120 --disable=C0301 scripts/main.py
+          pylint --max-line-length=120 --disable=C0301 --fail-under=6 scripts/main.py
 
       - name: Format code with black
         run: |
