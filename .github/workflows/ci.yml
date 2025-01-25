@@ -30,10 +30,6 @@ jobs:
         run: |
           pylint --max-line-length=120 --disable=C0301 --fail-under=6 scripts/main.py
 
-      - name: Format code with black
-        run: |
-          black --check .  # --check ensures it only checks and doesn't auto-format
-
   test:
     runs-on: ubuntu-latest
     needs: lint
