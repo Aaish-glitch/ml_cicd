@@ -23,10 +23,16 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install flake8
+          pip install pylint  # Install pylint
+          pip install black
 
-      - name: Lint Python code
-        run: flake8 .
+      - name: Run pylint
+        run: |
+          pylint --max-line-length=120 --disable=C0301 your_script.py
+
+      - name: Format code with black
+        run: |
+          black --check .  # --check ensures it only checks and doesn't auto-format
 
   test:
     runs-on: ubuntu-latest
