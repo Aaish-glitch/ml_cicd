@@ -9,17 +9,18 @@ sys.path.append(models_path)
 from models import load_data, preprocess_data, train_model, save_model, load_saved_model, predict
 
 def main():
+    """Loading and calling all functions"""
     # Step 1: Load the data
     print("Loading data...")
     df = load_data('../data/wine_quality.csv')
 
     # Step 2: Preprocess the data
     print("Preprocessing data...")
-    X, y = preprocess_data(df)
+    x, y = preprocess_data(df)
 
     # Step 3: Train the model
     print("Training model...")
-    model = train_model(X, y)
+    model = train_model(x, y)
 
     # Step 4: Save the trained model
     print("Saving model...")
@@ -31,10 +32,11 @@ def main():
 
     # Step 6: Make predictions with the trained model
     print("Making predictions...")
-    predictions = predict(loaded_model, X)
+    predictions = predict(loaded_model, x)
 
     # Print the first 10 predictions to verify
     print("First 10 predictions:", predictions[:10])
 
 if __name__ == "__main__":
     main()
+
