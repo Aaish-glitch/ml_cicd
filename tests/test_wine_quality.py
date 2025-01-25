@@ -1,19 +1,21 @@
 import pytest
 import numpy as np
 import pandas as pd
+import os
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error
 
 # Assuming the dataset is in CSV format, you can adjust the file path.
-def load_data():
-    # Load the wine dataset (this can be adjusted based on your data source)
-    df = pd.read_csv('../data/wine_quality.csv')
+def load_data(filename):
+    """Load the wine quality dataset from the data directory."""
+    file_path = os.path.join(os.path.dirname(__file__), '..', 'data', filename)
+    df= pd.read_csv(file_path)
     return df
 
 def test_data_loading():
-    df = load_data()
+    df = load_data('wine_quality.csv')
     # Check if the dataset contains the expected columns
     expected_columns = ['fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar',
                         'chlorides', 'free sulfur dioxide', 'total sulfur dioxide', 'density',
@@ -34,7 +36,7 @@ def preprocess_data(df):
     return features_scaled
 
 def test_data_preprocessing():
-    df = load_data()
+    df = load_data('wine_quality.csv')
     
     # Preprocess the data (scale the features)
     features_scaled = preprocess_data(df)
@@ -60,7 +62,7 @@ def train_model(df):
     return model, X_test, y_test
 
 def test_model_training():
-    df = load_data()
+    df = load_data('wine_quality.csv')
     model, X_test, y_test = train_model(df)
     
     # Ensure the model is trained (check if the model has the 'feature_importances_' attribute)
@@ -73,7 +75,7 @@ def test_model_training():
     assert all(y_pred >= 0) and all(y_pred <= 10), "Predicted values are out of range"
 
 def test_model_predictions():
-    df = load_data()
+    df = load_data('wine_quality.csv')
     model, X_test, y_test = train_model(df)
     
     # Predict using the trained model
