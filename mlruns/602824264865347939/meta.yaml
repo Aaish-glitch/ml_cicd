@@ -1,0 +1,6 @@
+artifact_location: file:///c:/GitHub/ml_cicd/ml_cicd/mlruns/602824264865347939
+creation_time: 1737985744349
+experiment_id: '602824264865347939'
+last_update_time: 1737985744349
+lifecycle_stage: active
+name: wine_test_experiement
